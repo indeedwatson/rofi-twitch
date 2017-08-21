@@ -12,7 +12,7 @@ Scripts to view and launch online Twitch streams.
 
 ```
 git clone https://github.com/indeedwatson/rofi-twitch/
-cd rofi-bangs
+cd rofi-twitch
 chmod +x ./*.sh
 ```
 
