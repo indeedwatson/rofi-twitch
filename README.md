@@ -10,11 +10,9 @@ Scripts to view and launch online Twitch streams.
 
 ## Installation
 
-`git clone https://github.com/indeedwatson/rofi-twitch/tree/dd06c756d731213429ec5be8d6ac66cb500b5f20`
-
-`cd rofi-bangs`
-
-`chmod +x ./*.sh`
+```git clone https://github.com/indeedwatson/rofi-twitch/
+cd rofi-bangs
+chmod +x ./*.sh```
 
 ## Usage
 
