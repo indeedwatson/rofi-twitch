@@ -8,6 +8,14 @@ Scripts to view and launch online Twitch streams.
 * [streamlink](https://github.com/streamlink/streamlink)
 * [TwitchNotifier](https://github.com/GiedriusS/TwitchNotifier)
 
+## Installation
+
+`git clone https://github.com/indeedwatson/rofi-twitch/tree/dd06c756d731213429ec5be8d6ac66cb500b5f20`
+`cd rofi-bangs`
+`chmod +x ./*.sh`
+
+## Usage
+
 **twitch.sh** launches the given channel with quality as an optional argument
 (defaulting to best), and as detailed in the script, you can open a browser
 window with twitch chat popout for extra Kappa.
@@ -31,3 +39,4 @@ to view and select from live channels:
 COMMANDS["live"]="~/bin/rofi-twitch"
 LABELS["live"]=""
 ```
+
