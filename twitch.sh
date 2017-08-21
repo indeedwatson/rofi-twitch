@@ -1,6 +1,5 @@
 #!/bin/bash
 # Shortcuts for livestreamer channels and quality
-
 twitch=http://www.twitch.tv/
 
 # Some channel names are too long, so you can alias
@@ -29,6 +28,7 @@ streamlink $twitch$channel $quality
 
 # Optionally, you can also launch twitch chat for the channel,
 # just add a "&" at the end of the streamlink line and uncomment
-# the line below:
+# the lines below:
 
-# firefox-nightly --new-window $twitch$channel/chat?popout= &
+# browser=firefox-nightly
+# $browser --new-window $twitch$channel/chat?popout= &
