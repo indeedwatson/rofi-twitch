@@ -25,6 +25,9 @@ case "${2:-b}" in
         ;;
 esac
 
+if [ -z $channel ]; then
+    exit
+fi
 # Exec livestreamer
 streamlink $twitch$channel $quality
 
