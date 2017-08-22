@@ -17,8 +17,10 @@ case "${2:-b}" in
     l*) quality=low;;
     m*) quality=medium;;
     *)
-        printf '%s: unkown quality option: %s (one of [l]ow,
-        [m]edium, [b]est)'"$0" "$2" >&2
+        echo '%s: unkown quality option: %s. Choose one of
+        [l]ow
+        [m]edium
+        [b]est)'"$0" "$2" >&2
         exit 1
         ;;
 esac
