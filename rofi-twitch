@@ -1,7 +1,7 @@
 #!/bin/bash
 # Shortcuts for livestreamer channels and quality
 twitch=http://www.twitch.tv/
-channel=
+user=
 
 # Some channel names are too long, so you can alias
 # your most visited channels, I'm using teamfortresstv
