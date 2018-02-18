@@ -1,6 +1,4 @@
-# rofi-twitch
-
-Scripts to view and launch online Twitch streams.
+View and launch online Twitch streams.
 
 ## Dependencies
 
@@ -13,32 +11,13 @@ Scripts to view and launch online Twitch streams.
 ```
 git clone https://github.com/indeedwatson/rofi-twitch/
 cd rofi-twitch
-chmod +x ./*.sh
+chmod +x rofi-twitch
 ```
+
+Edit `rofi-twitch` with your Twitch username. You can also add aliases for your most viewed
+channels to save those precious keystrokes
 
 ## Usage
 
-**twitch.sh** launches the given channel with quality as an optional argument
-(defaulting to best), and as detailed in the script, you can open a browser
-window with twitch chat popout for extra Kappa.
-
-**rofi-twitch** handles the rofi side of things. The reason to separate them is
-because `twitchnotifier` is a bit slow, this allows you to call `twitch.sh`
-individually through terminal or through
-[rofi-bangs](https://github.com/gotbletu/shownotes/blob/master/rofi-scripts-collection/rofi-bangs.sh)
-adding the following snippets:
-
-to launch with `twitch channel`:
-```bash
-# twitch
-COMMANDS["twitch"]="twitch \${input}"
-LABELS["twitch"]=""
-```
-
-to view and select from live channels:
-```bash
-# live twitch
-COMMANDS["live"]="~/bin/rofi-twitch"
-LABELS["live"]=""
-```
-
+- Call `rofi-twitch` to get `rofi` to list online channels. Select a channel or press Esc to exit.
+- Call `rofi-twitch channelname` to directly launch `streamlink` with the desired channel
