@@ -1,11 +1,11 @@
 #!/bin/bash
 # Shortcuts for livestreamer channels and quality
 twitch=http://www.twitch.tv/
+channel=
 
 # Some channel names are too long, so you can alias
 # your most visited channels, I'm using teamfortresstv
 # as an example but you can do as many as you want
-
 case "$1" in
     tftv) channel=teamfortresstv;;
     $1) channel=$1;;
@@ -17,18 +17,17 @@ case "${2:-b}" in
     l*) quality=low;;
     m*) quality=medium;;
     *)
-        echo '%s: unkown quality option: %s. Choose one of
-        [l]ow
-        [m]edium
+        echo '%s: unkown quality option: %s. Choose one of\n
+        [l]ow\n
+        [m]edium\n
         [b]est)'"$0" "$2" >&2
         exit 1
         ;;
 esac
 
-# Exit if there's no channel input
-if [ -z $channel ]; then
-    exit
-fi
+[ -z "$channel" ] && channel=$(twitchnotifier -c $user -n | rofi \
+    -dmenu -markup-rows -i -p "" | grep -Po '^.+?(?=\:)')
+[ -z "$channel" ] && exit
 
 # Exec livestreamer
 streamlink $twitch$channel $quality
