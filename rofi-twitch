@@ -26,7 +26,8 @@ case "${2:-b}" in
 esac
 
 [ -z "$channel" ] && channel=$(twitchnotifier -c $user -n | rofi \
-    -dmenu -markup-rows -i -p "" | grep -Po '^.+?(?=\:)')
+    -theme-str '#window { width: 1000; }'-dmenu -markup-rows -i \
+    -p "" | grep -Po '^.+?(?=\:)')
 [ -z "$channel" ] && exit
 
 # Exec livestreamer
