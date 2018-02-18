@@ -33,7 +33,7 @@ esac
 [ -z "$channel" ] && exit
 
 # Exec livestreamer
-streamlink $twitch$channel $quality
+streamlink https://twitch.tv/$channel $quality
 
 # Optionally, you can also launch twitch chat for the channel,
 # just add a "&" at the end of the streamlink line and uncomment
