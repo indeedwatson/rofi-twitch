@@ -1,6 +1,8 @@
 #!/bin/bash
 # this is a sample file, copy it to ~/.config/rofi-twitch and modify it
 # with your settings
+
+# your username, for twitchnotifier to grab followed channels from
 user=
 
 # alias for most watched channels, add as many as you want
