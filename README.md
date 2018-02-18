@@ -22,7 +22,7 @@ You can also add aliases for your most viewed channels to save those precious ke
 - Call `rofi-twitch` to get `rofi` to list online channels. Select a channel or press Esc to exit.
 - Call `rofi-twitch channelname` to directly launch `streamlink` with the desired channel
 
-If you want to use it with [rofi-bangs](https://github.com/gotbletu/shownotes/blob/master/rofi-scripts-collection/rofi-bangs.sh)
+If you want to use it with [rofi-bangs](https://github.com/gotbletu/shownotes/blob/master/rofi-scripts-collection/rofi-bangs.sh):
 
 ```
 # launch twitch channels
