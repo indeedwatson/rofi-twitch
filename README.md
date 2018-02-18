@@ -14,8 +14,8 @@ cd rofi-twitch
 chmod +x rofi-twitch
 ```
 
-Edit `rofi-twitch` with your Twitch username. You can also add aliases for your most viewed
-channels to save those precious keystrokes
+Copy the sample `settings` file to `~/.config/rofi-twitch/` and edit it with your Twitch username.
+You can also add aliases for your most viewed channels to save those precious keystrokes.
 
 ## Usage
 
