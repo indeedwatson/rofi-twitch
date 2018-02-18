@@ -1,7 +1,10 @@
 #!/bin/bash
+# this is a sample file, copy it to ~/.config/rofi-twitch and modify it
+# with your settings
 user=
 
-# alias for most watched channels
+# alias for most watched channels, add as many as you want
+# format is: "ALIAS) channel=fullchannelname;;"
 case "$1" in
     tftv) channel=teamfortresstv;;
     $1) channel=$1;;
