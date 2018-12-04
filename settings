@@ -1,13 +1,18 @@
 #!/bin/bash
-# this is a sample file, copy it to ~/.config/rofi-twitch and modify it
-# with your settings
-
-# your username, for twitchnotifier to grab followed channels from
 user=
 
-# alias for most watched channels, add as many as you want
-# format is: "ALIAS) channel=fullchannelname;;"
+# alias most watched channels
 case "$1" in
     tftv) channel=teamfortresstv;;
+    dist) channel=distortion2;;
+    gdq) channel=gamesdonequick;;
     $1) channel=$1;;
 esac
+
+# Optionally, you can also launch twitch chat for the channel,
+# just add a "&" at the end of the streamlink line and uncomment
+# the lines below:
+
+# browser=firefox
+# channel="$(echo $channel | tr -d ' ')"
+# $browser --new-window "$twitch/popout/$channel/chat"

@@ -3,7 +3,8 @@
 [ -z "$XDG_CONFIG_HOME" ] &&
 XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p "$XDG_CONFIG_HOME"
-source "$XDG_CONFIG_HOME/rofi-twitch/settings" twitch=http://www.twitch.tv/
+source "$XDG_CONFIG_HOME/rofi-twitch/settings"
+twitch=http://www.twitch.tv/
 
 # Some channel names are too long, so you can alias
 # your most visited channels, I'm using teamfortresstv
@@ -27,17 +28,11 @@ case "${2:-b}" in
         ;;
 esac
 
-[ -z "$channel" ] && channel=$(twitchnotifier -c $user -n | rofi \
+[ -z "$channel" ] && channel=$(twitchnotifier -c $user -n | perl \
+    -MHTML::Entities -pe 'encode_entities($_);' | rofi \
     -theme-str '#window { width: 1000; }' -dmenu -markup-rows -i \
     -p "" | grep -Po '^.+?(?=\:)')
 [ -z "$channel" ] && exit
 
 # Exec livestreamer
-streamlink https://twitch.tv/$channel $quality &
-
-# Optionally, you can also launch twitch chat for the channel,
-# just add a "&" at the end of the streamlink line and uncomment
-# the lines below:
-
-# browser=firefox-nightly
-# $browser --new-window $twitch$channel/chat?popout= &
+streamlink $twitch$channel $quality &
