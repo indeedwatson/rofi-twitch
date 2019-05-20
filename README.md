@@ -5,6 +5,7 @@ View and launch online Twitch streams.
 * [rofi](https://github.com/DaveDavenport/rofi)
 * [streamlink](https://github.com/streamlink/streamlink)
 * [TwitchNotifier](https://github.com/GiedriusS/TwitchNotifier)
+* [xdotool](https://github.com/jordansissel/xdotool)
 
 ## Installation
 
