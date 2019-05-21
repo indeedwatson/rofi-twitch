@@ -62,11 +62,21 @@ streamlink -p $player -a "$argument" https://twitch.tv/$channel $quality &
 # just add a "&" at the end of the streamlink line and uncomment
 # the lines below:
 
-# browser=firefox
+# browser=firefox/chrome/chromium
 # channel="$(echo $channel | tr -d ' ')"
-# $browser -width 480 -height 1080 --new-window "https://twitch.tv/popout/$channel/chat" &
+# Conditional statement for chrome/chromium parameters
+#if [ $browser =  chrome ] || [ $browser = chromium ]
+#then
+#  $browser --window-size=480,1080 --no-default-browser-check --app="https://twitch.tv/popout/$channel/chat" &
+#fi
+# Conditional statement for firefox parameters
+#if [ $browser = firefox ]
+#then
+#  $browser -width 480 -height 1080 --new-window "https://twitch.tv/popout/$channel/chat" &
+#fi
 
 # To adjust your twitch chat window size and position, uncomment
 # the following line and adjust your parameters.
+# Note that adjust_window() will not work
+# if a maximized firefox window is already opened
 # adjust_window $browser 480 1080 1920 0
-
