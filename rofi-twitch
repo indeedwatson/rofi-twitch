@@ -19,7 +19,7 @@ function adjust_window() {
   local WID="$(xdotool search --onlyvisible --sync --class $1 | tail -1)"
   xdotool windowsize $(echo ${WID}) $2 $3 && \
     xdotool windowmove $(echo ${WID}) $4 $5
-
+}
 # Some channel names are too long, so you can alias
 # your most visited channels, I'm using teamfortresstv
 # as an example but you can do as many as you want
