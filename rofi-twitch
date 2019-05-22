@@ -1,10 +1,10 @@
 #!/bin/bash
-# Shortcuts for livestreamer channels and quality
+# Shortcuts for streamlinks channels and quality
 [ -z "$XDG_CONFIG_HOME" ] &&
 XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p "$XDG_CONFIG_HOME"
 source "$XDG_CONFIG_HOME/rofi-twitch/settings"
-twitch=http://www.twitch.tv/
+twitch=https://www.twitch.tv/
 
 # Some channel names are too long, so you can alias
 # your most visited channels, I'm using teamfortresstv
@@ -17,8 +17,8 @@ esac
 # Choose quality, best by default
 case "${2:-b}" in
     b*) quality=best;;
-    l*) quality=low;;
-    m*) quality=medium;;
+    l*) quality=480p;;
+    m*) quality=720p60;;
     *)
         echo '%s: unkown quality option: %s. Choose one of\n
         [l]ow\n
@@ -34,5 +34,5 @@ esac
     -p "" | grep -Po '^.+?(?=\:)')
 [ -z "$channel" ] && exit
 
-# Exec livestreamer
-streamlink $twitch$channel $quality &
+# Exec streamlinks
+streamlink $twitch$channel --default-stream $quality &
