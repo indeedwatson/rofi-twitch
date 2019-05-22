@@ -5,6 +5,41 @@
 # your username, for twitchnotifier to grab followed channels from
 user=
 
+# set your screen resolution and the desired width of your video player & browser
+# example if your screen resolution is 1920*1080:
+# player dimensions = 1440*1080
+# browser dimensions = (1920-1440)*1080 = 480*1080
+# if you encounter a black screen with your player
+# please leave a gap of -1px for playerWidth
+resolution=(1920 1080)
+playerWidth=1439
+browserWidth=480
+
+# choose your player (mpv or vlc), default to mpv.
+# see https://streamlink.github.io/players.html for player compatibility
+player=mpv
+
+# video player title bar customization
+# see https://streamlink.github.io/cli.html#cmdoption-t for more variables
+title="{author} - {game}"
+
+# for help with arguments, please check:
+# https://wiki.videolan.org/VLC_command-line_help for vlc
+# <URL OF MPV> for mpv
+if [ $player = vlc ]
+then 
+   argument="--qt-minimal-view --no-qt-video-autoresize"
+fi
+
+if [ $player = mpv ]
+then
+    argument="--no-config --geometry=${playerWidth}x${resolution[1]}"
+fi
+
+# choose your browser (chromium, chrome or firefox), default to chromium.
+# note for firefox only: will not work if a maximized firefox window is already opened.
+browser=chromium
+
 # alias for most watched channels, add as many as you want
 # format is: "ALIAS) channel=fullchannelname;;"
 case "$1" in

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Shortcuts for livestreamer channels and quality
 [ -z "$XDG_CONFIG_HOME" ] &&
 XDG_CONFIG_HOME="$HOME/.config"
@@ -6,11 +6,10 @@ mkdir -p "$XDG_CONFIG_HOME"
 source "$XDG_CONFIG_HOME/rofi-twitch/settings" twitch=http://www.twitch.tv/
 
 # Function to adjust the size and the position
-# of your player and your browser using parameters where
+# of the player and the browser using parameters where
 # $1 is the application;
 # $2 is width; $3 is the height;
 # $4 is the x axis; $5 is the y axis
-# Dependency: xdotool ( A command-line X11 automation tool)
 function adjust_window() {
   while ! pidof $1 >> /dev/null ;
   do
@@ -19,6 +18,7 @@ function adjust_window() {
   local WID="$(xdotool search --onlyvisible --sync --class $1 | tail -1)"
   xdotool windowsize $(echo ${WID}) $2 $3 && \
     xdotool windowmove $(echo ${WID}) $4 $5
+}
 
 # Some channel names are too long, so you can alias
 # your most visited channels, I'm using teamfortresstv
@@ -44,39 +44,30 @@ esac
 [ -z "$channel" ] && channel=$(twitchnotifier -c $user -n | perl \
     -MHTML::Entities -pe 'encode_entities($_);' | rofi \
     -theme-str '#window { width: 1000; }' -dmenu -markup-rows -i \
-    -p "" | grep -Po '^.+?(?=\:)')
+    -p "" | grep -Po '^.+?(?=\is playing)')
 [ -z "$channel" ] && exit
 
 # Exec livestreamer
-# Optionally, you can adjust your player window size and position,
-# just uncomment the last line and adjust your parameters.
-# See https://streamlink.github.io/players.html for player compatibility
-# and https://wiki.videolan.org/VLC_command-line_help for help with arguments.
-player=vlc
-argument="--qt-minimal-view {filename} --no-qt-video-autoresize"
-streamlink -p $player -a "$argument" https://twitch.tv/$channel $quality &
-#adjust_window $player 1440 1080 0 1920
+eval streamlink -p \"$player $argument\" --title \"$title\" https://twitch.tv/$channel $quality &
+adjust_window $player $playerWidth ${resolution[1]} 0 ${resolution[0]}
 
 
 # Optionally, you can also launch twitch chat for the channel,
 # just add a "&" at the end of the streamlink line and uncomment
 # the lines below:
 
-# browser=firefox/chrome/chromium
-# channel="$(echo $channel | tr -d ' ')"
+channel="$(echo $channel | tr -d ' ')"
 # Conditional statement for chrome/chromium parameters
-#if [ $browser =  chrome ] || [ $browser = chromium ]
-#then
-#  $browser --window-size=480,1080 --no-default-browser-check --app="https://twitch.tv/popout/$channel/chat" &
-#fi
+if [ $browser =  chrome ] || [ $browser = chromium ]
+then
+  $browser --window-size=$browserWidth,${resolution[1]} --no-default-browser-check --app="https://twitch.tv/popout/$channel/chat" &
+fi
 # Conditional statement for firefox parameters
-#if [ $browser = firefox ]
-#then
-#  $browser -width 480 -height 1080 --new-window "https://twitch.tv/popout/$channel/chat" &
-#fi
-
-# To adjust your twitch chat window size and position, uncomment
-# the following line and adjust your parameters.
 # Note that adjust_window() will not work
 # if a maximized firefox window is already opened
-# adjust_window $browser 480 1080 1920 0
+if [ $browser = firefox ]
+then
+  $browser -width $browserWidth -height ${resolution[1]} --new-window "https://twitch.tv/popout/$channel/chat" &
+fi
+
+adjust_window $browser $browserWidth ${resolution[1]} ${resolution[0]} 0
