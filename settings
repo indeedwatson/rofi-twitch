@@ -1,18 +1,13 @@
 #!/bin/bash
-user=
+user= # your twitch username, to get the channels you follow
+player=mpv
+browser= # choose a browser if you want to open twitch chat alongside the stream
 
-# alias most watched channels
+# alias most watched channels for quick launching
+# eg. `rofi-twitch tftv` will open teamfortresstv, etc
 case "$1" in
     tftv) channel=teamfortresstv;;
     dist) channel=distortion2;;
     gdq) channel=gamesdonequick;;
     $1) channel=$1;;
 esac
-
-# Optionally, you can also launch twitch chat for the channel,
-# just add a "&" at the end of the streamlink line and uncomment
-# the lines below:
-
-# browser=firefox
-# channel="$(echo $channel | tr -d ' ')"
-# $browser --new-window "$twitch/popout/$channel/chat"
