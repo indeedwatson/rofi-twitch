@@ -63,8 +63,6 @@ then
   $browser --window-size=$browserWidth,${resolution[1]} --no-default-browser-check --app="https://twitch.tv/popout/$channel/chat" &
 fi
 # Conditional statement for firefox parameters
-# Note that adjust_window() will not work
-# if a maximized firefox window is already opened
 if [ $browser = firefox ]
 then
   $browser -width $browserWidth -height ${resolution[1]} --new-window "https://twitch.tv/popout/$channel/chat" &

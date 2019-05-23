@@ -36,9 +36,10 @@ then
     argument="--no-config --geometry=${playerWidth}x${resolution[1]}"
 fi
 
-# choose your browser (chromium, chrome or firefox), default to chromium.
-# note for firefox only: will not work if a maximized firefox window is already opened.
-browser=chromium
+# choose your browser (chromium, chrome or firefox)
+# note: please select an alternate browser from your default one
+# to avoid compatibility issue with window placement
+browser=
 
 # alias for most watched channels, add as many as you want
 # format is: "ALIAS) channel=fullchannelname;;"
