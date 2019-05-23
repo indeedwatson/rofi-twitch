@@ -56,16 +56,16 @@ adjust_window $player $playerWidth ${resolution[1]} 0 ${resolution[0]}
 # just add a "&" at the end of the streamlink line and uncomment
 # the lines below:
 
-channel="$(echo $channel | tr -d ' ')"
+# channel="$(echo $channel | tr -d ' ')"
 # Conditional statement for chrome/chromium parameters
-if [ $browser =  chrome ] || [ $browser = chromium ]
-then
-  $browser --window-size=$browserWidth,${resolution[1]} --no-default-browser-check --app="https://twitch.tv/popout/$channel/chat" &
-fi
+# if [ $browser =  chrome ] || [ $browser = chromium ]
+# then
+#   $browser --window-size=$browserWidth,${resolution[1]} --no-default-browser-check --app="https://twitch.tv/popout/$channel/chat" &
+# fi
 # Conditional statement for firefox parameters
-if [ $browser = firefox ]
-then
-  $browser -width $browserWidth -height ${resolution[1]} --new-window "https://twitch.tv/popout/$channel/chat" &
-fi
+# if [ $browser = firefox ]
+# then
+#   $browser -width $browserWidth -height ${resolution[1]} --new-window "https://twitch.tv/popout/$channel/chat" &
+# fi
 
-adjust_window $browser $browserWidth ${resolution[1]} ${resolution[0]} 0
+# adjust_window $browser $browserWidth ${resolution[1]} ${resolution[0]} 0
