@@ -1,3 +1,7 @@
+**SUPERSEDED BY https://gitlab.com/indeedwatson/polybar_twitch/-/tree/master**
+
+----
+
 View and launch online Twitch streams.
 
 ## Dependencies
